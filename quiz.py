@@ -1,51 +1,42 @@
-questions = [
-    "Quantos elementos tem na tabela periódica?",
-    "Há quantos anos o Brasil foi descoberto?",
-    "Qual é a capital do Brasil?",
-    "Qual é a capital da França?",
-    "Qual é a capital da Alemanha?",
-]
+import json
 
-options = (
-    ("a. 116", "b. 523", "c. 118", "d. 120"),
-    ("a. 523", "b. 524", "c. 500", "d. 526"),
-    ("a. Brasília", "b. Rio de Janeiro", "c. São Paulo", "d. Minas Gerais"),
-    ("a. Paris", "b. Londres", "c. Berlim", "d. Madrid"),
-    ("a. Berlim", "b. Londres", "c. Paris", "d. Madrid"),
-)
+with open("perguntas.json", "r", encoding="utf-8") as arquivo:
+    questions = json.load(arquivo)
 
-answers = ("c", "a", "a", "a", "a")
+letras = ["a", "b", "c", "d"]
 guesses = []
 score = 0
 
-for question_num, question in enumerate(questions):
+for question_num, q in enumerate(questions):
     print("=====" * 20)
-    print(f"{question}")
-    for option in options[question_num]:
-        print(option)
+    print(f"{question_num + 1}. {q['pergunta']}")
 
-    guess = input("Escolha a sua resposta (A, B, C ou D): ").upper().strip()
+    for i, opcao in enumerate(q["opcoes"]):
+        print(f"{letras[i]}. {opcao}")
+
+    guess = input("Escolha a sua resposta (A, B, C ou D): ").lower().strip()
     guesses.append(guess)
 
-    if guess == answers[question_num].upper():
+    if guess == q["resposta"]:
         score += 1
         print("Você acertou na mosca!")
     else:
-        print(f"Ops! A resposta correta é {answers[question_num].upper()}")
+        resposta_certa = q["opcoes"][letras.index(q["resposta"])]
+        print(f"Ops! A resposta correta é {q['resposta'].upper()} - {resposta_certa}")
 
 print("========" * 10)
 print("Resultado!")
 print("========" * 10)
 
-print("Gabarito:  ", end="")
-for answer in answers:
-    print(answer.upper(), end=" ")
+print("Gabarito:   ", end="")
+for q in questions:
+    print(q["resposta"].upper(), end=" ")
 
 print()
 print("Seus palpites: ", end="")
 for guess in guesses:
-    print(guess, end=" ")
+    print(guess.upper(), end=" ")
 
 print()
-score_pct = int((score / len(answers)) * 100)
+score_pct = int((score / len(questions)) * 100)
 print(f"\nSua pontuação: {score_pct}%")
