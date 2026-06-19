@@ -1,0 +1,27 @@
+[
+    {
+        "pergunta": "Quantos elementos tem na tabela periódica?",
+        "opcoes": ["116", "523", "118", "120"],
+        "resposta": "c"
+    },
+    {
+        "pergunta": "Em que ano o Brasil foi descoberto?",
+        "opcoes": ["1492", "1600", "1550", "1500"],
+        "resposta": "d"
+    },
+    {
+        "pergunta": "Qual é a capital do Brasil?",
+        "opcoes": ["Brasília", "Rio de Janeiro", "São Paulo", "Minas Gerais"],
+        "resposta": "a"
+    },
+    {
+        "pergunta": "Qual é a capital da França?",
+        "opcoes": ["Paris", "Londres", "Berlim", "Madrid"],
+        "resposta": "a"
+    },
+    {
+        "pergunta": "Qual é a capital da Alemanha?",
+        "opcoes": ["Berlim", "Londres", "Paris", "Madrid"],
+        "resposta": "a"
+    }
+]
