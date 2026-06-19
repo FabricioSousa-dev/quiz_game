@@ -1,61 +1,51 @@
-questions = {
-  "Quantos elementos tem na tabela periodica?",
-   "Quantos anos o brasil foi descoberto?",
-    "Qual é a capital do brasil?", 
-    "Qual é a capital da frança?",
-    "Qual é a capital da alemanha?",
-    
-}  
+questions = [
+    "Quantos elementos tem na tabela periódica?",
+    "Há quantos anos o Brasil foi descoberto?",
+    "Qual é a capital do Brasil?",
+    "Qual é a capital da França?",
+    "Qual é a capital da Alemanha?",
+]
 
 options = (
-    ("a.116","b.523","c.118","d.118"),
-    ("a.523","b.524","c.500","d.526"),
-    ("a.brasilia","b.rio de janeiro","c.são paulo","d.minas gerais"),
-    ("a.paris","b.londres","c.berlim","d.madrid"),
-    ("a.berlim","b.londres","c.paris","d.madrid")
-    
+    ("a. 116", "b. 523", "c. 118", "d. 120"),
+    ("a. 523", "b. 524", "c. 500", "d. 526"),
+    ("a. Brasília", "b. Rio de Janeiro", "c. São Paulo", "d. Minas Gerais"),
+    ("a. Paris", "b. Londres", "c. Berlim", "d. Madrid"),
+    ("a. Berlim", "b. Londres", "c. Paris", "d. Madrid"),
 )
+
+answers = ("c", "a", "a", "a", "a")
 guesses = []
-
-answers = ("c","a","a","c","a")
 score = 0
-question_num = 0
 
-for question in questions:
-    print("====="*20)
+for question_num, question in enumerate(questions):
+    print("=====" * 20)
     print(f"{question}")
+    for option in options[question_num]:
+        print(option)
 
-for option in options[question_num]:
-    print(option)
+    guess = input("Escolha a sua resposta (A, B, C ou D): ").upper().strip()
+    guesses.append(guess)
 
-guess = input("Escolha a sua resposta (A, B, C ou D): ").upper().strip()
-guesses.append(guess)
+    if guess == answers[question_num].upper():
+        score += 1
+        print("Você acertou na mosca!")
+    else:
+        print(f"Ops! A resposta correta é {answers[question_num].upper()}")
 
-if guess == answers[question_num]:
-    score += 1
-    print("Você acertou na mosca!")
-else:
-    print("Ops! A resposta correta é {answers[question_num]}")
-
-question_num += 1
-
-print("========"*50)
+print("========" * 10)
 print("Resultado!")
-print("========"*50)
+print("========" * 10)
 
-print("Respostas:")
-
+print("Gabarito:  ", end="")
 for answer in answers:
-    print(answers, end=" ")
+    print(answer.upper(), end=" ")
+
 print()
-
-print("Seus palpites:",end=" ")
-
+print("Seus palpites: ", end="")
 for guess in guesses:
     print(guess, end=" ")
+
 print()
-
-score = int((score/len(answers))*100)
-
-print(f"Sua pontuação: {score}%")
-
+score_pct = int((score / len(answers)) * 100)
+print(f"\nSua pontuação: {score_pct}%")
