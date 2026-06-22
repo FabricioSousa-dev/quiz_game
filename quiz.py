@@ -40,3 +40,5 @@ for guess in guesses:
 print()
 score_pct = int((score / len(questions)) * 100)
 print(f"\nSua pontuação: {score_pct}%")
+if score_pct >= 50:
+    print("Uau! Você acertou mais da metade das perguntas! Parabéns!")
